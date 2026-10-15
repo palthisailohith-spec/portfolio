@@ -1,6 +1,8 @@
 # Sai Lohith — Engineering Portfolio
 
-A responsive, buildless portfolio for a Platform / DevOps Engineer with an SRE background.
+A responsive, buildless portfolio for Sai Lohith, a Platform / DevOps Engineer with an SRE background.
+
+The refined design leads with identity and professional experience, followed by an interactive SVG capability map, engineering work notes, a career timeline, and an engineering approach section. Charcoal surfaces, warm white text and a mint accent keep the presentation focused.
 
 ## Files
 - `dist/index.html`: identity, experience, selected professional work and contact.
