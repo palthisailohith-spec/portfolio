@@ -34,9 +34,9 @@
         <div class="avatar" aria-hidden="true"><span>sl.</span><div class="avatar-lines"></div></div>
         <div class="identity-copy">
           <h1 id="intro-title">Sai Lohith<span class="name-period">.</span></h1>
-          <p class="role">Platform & DevOps Engineer <span>· SRE background</span></p>
-          <p class="intro-text">I work on the infrastructure behind software — Kubernetes, distributed storage, delivery pipelines and the systems that keep it all running.</p>
-          <p class="intro-text">Four years in SRE and platform engineering, from large-scale infrastructure at NPCI to helping build a data architecture platform for SIX Swiss Exchange through Flexilant Works.</p>
+          <p class="role">Platform & DevOps Engineer <span>· SRE</span></p>
+          <p class="intro-text">I build and automate infrastructure — deploying Kubernetes clusters, developing CI/CD pipelines and setting up the monitoring that makes production systems observable.</p>
+          <p class="intro-text">Four years across SRE, DevOps and platform engineering: building Kubernetes and storage infrastructure at NPCI, then helping design and build a data architecture platform for SIX Swiss Exchange through Flexilant Works.</p>
           <div class="intro-actions">
             <a class="button" href="#experience">My experience <span aria-hidden="true">↓</span></a>
             <a class="quiet-link" href="#projects">Projects <span aria-hidden="true">↗</span></a>
@@ -60,13 +60,26 @@
       <article class="experience-item">
         <div class="experience-top"><div><h3>Flexilant Works</h3><p class="job-title">DevOps / Platform Engineer</p></div><p class="dates">Aug 2025 — Present</p></div>
         <p class="client">Client: SIX Swiss Exchange · Remote</p>
-        <p>Helping build a data architecture platform on OpenShift. My work spans service deployments, Helm, GitOps, workflow orchestration, CI/CD and observability.</p>
-        <details><summary>What I work on <span aria-hidden="true">+</span></summary><div class="detail-body"><ul><li>Deployment and configuration of Airflow, Trino, MinIO, Metaflow and Argo workflow components.</li><li>Application delivery with Helm and ArgoCD within enterprise platform constraints.</li><li>GitLab CI standardisation and a deployment pipeline for a Python/FastAPI backend.</li><li>Airflow DAGs, monitoring, logging and troubleshooting across application dependencies.</li></ul></div></details>
+        <p>Helped design and build a data architecture platform on OpenShift Kubernetes, contributing to architecture, service deployment, workflow automation and CI/CD.</p>
+        <ul class="engineering-highlights">
+          <li><strong>Platform deployment.</strong> Deployed Airflow, Trino, MinIO, Metaflow, Argo Workflows and Argo Events using Helm, with ArgoCD for continuous delivery.</li>
+          <li><strong>Workflow engineering.</strong> Deployed Airflow end to end, developed DAGs for market and index data workflows, and built their monitoring with Prometheus, Grafana, Alertmanager and Elasticsearch.</li>
+          <li><strong>CI/CD development.</strong> Standardised a frontend GitLab pipeline using company golden-path components for build, lint, test, audit and SonarQube. Designed a deployment pipeline for a Python/FastAPI backend.</li>
+          <li><strong>Infrastructure automation.</strong> Used Terraform and Ansible for provisioning and configuration, and Python and Bash for repeatable infrastructure tasks and health checks.</li>
+        </ul>
+        <details><summary>Engineering context <span aria-hidden="true">+</span></summary><div class="detail-body"><p>Designed deployments around enterprise RBAC, approved registries, service accounts and centrally managed GitOps. Investigated failures across workload resources, persistent storage, secrets, PostgreSQL connectivity, TLS and service networking.</p><p>Used Cursor, Claude and GitHub Copilot for engineering work, reviewing and testing AI-assisted changes before deployment.</p></div></details>
       </article>
       <article class="experience-item">
-        <div class="experience-top"><div><h3>National Payments Corporation of India</h3><p class="job-title">SRE · Graduate trainee → Senior Associate</p></div><p class="dates">Sep 2022 — Aug 2025</p></div>
-        <p>Operated production Kubernetes, Linux and distributed storage across two sites. The environment included 200+ and 50+ node RKE clusters and 10PB+ of Rook-Ceph storage.</p>
-        <details><summary>More about the work <span aria-hidden="true">+</span></summary><div class="detail-body"><ul><li>Kubernetes deployments, Helm releases, networking, persistent volumes and node troubleshooting.</li><li>Rook-Ceph and MinIO operations, failure investigation and recovery verification.</li><li>Monitoring with Prometheus, Grafana and Alertmanager; delivery with Jenkins and GitLab CI.</li><li>Python and Bash automation, AWS services, Terraform and Ansible.</li></ul><div class="role-history"><span>2024 — 2025</span><span>Senior Associate SRE</span><span>2023 — 2024</span><span>Associate SRE</span><span>2022 — 2023</span><span>Graduate Engineer Trainee</span></div></div></details>
+        <div class="experience-top"><div><h3>National Payments Corporation of India</h3><p class="job-title">Site Reliability Engineering · Graduate Engineer Trainee → Senior Associate SRE</p></div><p class="dates">Sep 2022 — Aug 2025</p></div>
+        <p>Built and operated Kubernetes infrastructure, end-to-end monitoring and CI/CD for analytics workloads across production and UAT environments.</p>
+        <ul class="engineering-highlights">
+          <li><strong>Kubernetes infrastructure.</strong> Deployed Kubernetes clusters with RKE and managed workload delivery with Helm and ArgoCD. Production environments included 200+ and 50+ node RKE clusters across two sites.</li>
+          <li><strong>End-to-end observability.</strong> Set up monitoring and alerting for an analytics platform with Prometheus, Grafana, ELK and Alertmanager — from metrics collection and dashboards to log visibility and alerts.</li>
+          <li><strong>CI/CD engineering.</strong> Developed and maintained Jenkins and GitLab CI pipelines for automated testing, application deployment and rollback.</li>
+          <li><strong>Infrastructure as code.</strong> Provisioned infrastructure with Terraform, automated Linux host configuration with Ansible, and developed Python and Bash automation for health checks and recurring infrastructure tasks.</li>
+          <li><strong>Distributed storage.</strong> Worked across 10PB+ of Rook-Ceph block, file and object storage, alongside MinIO; investigated failures, recovered components and verified storage and workload health.</li>
+        </ul>
+        <details><summary>Career progression & reliability work <span aria-hidden="true">+</span></summary><div class="detail-body"><p>Worked across Kubernetes scheduling, networking and persistent volumes, Linux CPU, memory and disk issues, and Ceph/OSD health. Earlier work included pre-production Kubernetes, Docker workloads, MinIO setup and an initial Rook-Ceph deployment.</p><div class="role-history"><span>2024 — 2025</span><span>Senior Associate SRE</span><span>2023 — 2024</span><span>Associate SRE</span><span>2022 — 2023</span><span>Graduate Engineer Trainee</span></div></div></details>
       </article>
     </section>
 
