@@ -1,30 +1,42 @@
-# Sai Lohith — Engineering Portfolio
+# Sai Lohith — Portfolio
 
-A responsive, buildless portfolio for Sai Lohith, a Platform / DevOps Engineer with an SRE background.
+A minimal personal site for Sai Lohith, a Platform & DevOps Engineer with an SRE background. A narrow reading layout, quiet typography, light and dark themes, compact experience, and a space for future projects.
 
-The refined design leads with identity and professional experience, followed by an interactive SVG capability map, engineering work notes, a career timeline, and an engineering approach section. Charcoal surfaces, warm white text and a mint accent keep the presentation focused.
+## Local preview
 
-## Files
-- `dist/index.html`: identity, experience, selected professional work and contact.
-- `dist/styles.css`: responsive design, illustrations, reduced-motion support.
-- `dist/app.js`: toolkit explorer, accessible work dialogs, email copy and reading progress.
+```sh
+python -m http.server 8000 --directory dist
+```
 
-## Preview locally
-Run `python -m http.server 8000 --directory dist` and visit http://localhost:8000.
-No build or package installation is required. Fonts load from Google Fonts with local fallbacks.
-
-## GitHub Pages
-The included workflow deploys `dist/` on pushes to `main`. Enable GitHub Actions as the Pages source in repository Settings → Pages. Confirm the repository default branch before enabling the workflow.
-
-## Content
-Professional contributions are based on supplied career documents. The engineering landscape and work illustrations are conceptual visuals, not live infrastructure telemetry. Employer code and internal deployment details are not included.
-
-## Design research
-- https://brittanychiang.com — clear work history and evidence.
-- https://rauno.me — restrained visual hierarchy.
-- https://bruno-simon.com — memorable subject-specific interaction.
-- https://www.reddit.com/r/webdev/comments/1g46qod/favourite_dev_portfolios/ — community references and discussion.
-X/Twitter searches did not yield usable direct posts; no findings are attributed to them.
+Visit http://localhost:8000. No installation or build is required. Serve the files over HTTP so JavaScript modules can load. The page remains readable without JavaScript; theme switching, email copy and project rendering use JavaScript. DM Sans loads from Google Fonts, with system font fallbacks.
 
 ## Editing
-Update biography and experience in `index.html`, and detailed work notes and toolkit descriptions in `app.js`. Keep claims and scale figures grounded in verified work. Links point to the verified GitHub and LinkedIn profiles; no private API tokens are used.
+
+- `dist/index.html`: introduction, social links, professional experience, toolkit and contact.
+- `dist/styles.css`: responsive layout and both colour themes.
+- `dist/app.js`: theme preference, email copy, IST clock and project rendering.
+- `dist/projects.js`: shipped projects. Currently empty, as projects will be added later.
+
+To publish a project, add an object to the exported `projects` array:
+
+```js
+export const projects = [{
+  title: 'Your project',
+  description: 'The problem, your implementation, and what works today.',
+  technologies: ['Python', 'Kubernetes'],
+  repository: 'https://github.com/your-account/your-project',
+  demo: 'https://your-project.example' // optional
+}];
+```
+
+Only add actual projects and verified claims. The empty-state message disappears automatically when a project is added. Project text is rendered with DOM text APIs and outbound project links accept HTTPS URLs only.
+
+## GitHub Pages
+
+The included workflow deploys `dist/` on a push to `main`. In repository Settings → Pages, select GitHub Actions as the source. The separate private preview is published through Sites.
+
+## Content and visual direction
+
+The career content reflects supplied professional experience. Client work is described as employment experience, not as personal projects or open-source contributions. No private source or internal architecture is included. The monogram is intentional and can be replaced with a supplied personal photo later.
+
+Visual reference: https://kaizakin.site/ — minimal navigation, readable content width and restrained section styling. The copy and implementation are original to this portfolio.

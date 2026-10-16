@@ -1,6 +1,87 @@
-'use strict';
-const layers={platform:{tag:'01 / Platform engineering',title:'From configuration to running workloads.',description:'Kubernetes and OpenShift deployments, Helm configuration, and troubleshooting across compute, networking and permissions.',stack:'Kubernetes · OpenShift · Helm'},delivery:{tag:'02 / Delivery automation',title:'A repeatable path to deployment.',description:'GitLab CI pipelines, golden-path components and GitOps workflows that connect application changes to controlled deployments.',stack:'GitLab CI · ArgoCD · Ansible'},storage:{tag:'03 / Distributed storage',title:'Reliability beyond the application.',description:'Experience operating Rook-Ceph block, file and object storage, MinIO and Kubernetes persistent volumes at NPCI.',stack:'Rook-Ceph · MinIO · Persistent volumes'},observe:{tag:'04 / Observability',title:'Make system behaviour visible.',description:'Metrics, dashboards, alerting and application visibility with Prometheus, Grafana, Alertmanager and Elasticsearch.',stack:'Prometheus · Grafana · Elasticsearch'}};
-document.querySelectorAll('[data-layer]').forEach(button=>button.addEventListener('click',()=>{document.querySelectorAll('[data-layer]').forEach(b=>{b.classList.toggle('active',b===button);b.setAttribute('aria-pressed',String(b===button));});document.querySelectorAll('[data-map]').forEach(node=>node.classList.toggle('selected',node.dataset.map===button.dataset.layer));const data=layers[button.dataset.layer];document.getElementById('layer-tag').textContent=data.tag;document.getElementById('layer-title').innerHTML=data.title;document.getElementById('layer-description').textContent=data.description;document.getElementById('layer-stack').textContent=data.stack;}));
-const cases={platform:{client:'FLEXILANT WORKS · CLIENT: SIX SWISS EXCHANGE',title:'Helping build a data architecture platform.',body:'<h3>Context</h3><p>Contributed to architecture, design and deployment work for a data architecture platform on OpenShift Kubernetes. The work involved fitting services into an enterprise environment with centrally managed components and access controls.</p><h3>My contributions</h3><ul><li>Deployed and configured Airflow, Trino, MinIO, Metaflow and Argo workflow components with Helm.</li><li>Used ArgoCD for continuous delivery within the established GitOps platform.</li><li>Worked on Airflow DAGs and their monitoring with Prometheus, Grafana, Alertmanager and Elasticsearch.</li><li>Troubleshot workload readiness, storage, secrets, database connections, TLS and service networking.</li></ul><h3>Engineering focus</h3><p>Understand application dependencies, adapt configuration to the available permissions, and verify the deployed services. This is professional client work; source code and internal architecture are not reproduced here.</p>'},storage:{client:'NATIONAL PAYMENTS CORPORATION OF INDIA',title:'Reliability at infrastructure scale.',body:'<h3>Context</h3><p>Operated production RKE Kubernetes at two sites: a cluster with 200+ nodes and another with 50+ nodes. The storage environment included 10PB+ of Rook-Ceph across block, file and object storage, alongside MinIO.</p><h3>My contributions</h3><ul><li>Handled deployments, Helm releases, CRDs, persistent volumes, networking and service routing.</li><li>Investigated Ceph and OSD health, identified affected workloads, recovered failed components and verified recovery.</li><li>Troubleshot Linux node CPU, memory and disks, scheduling failures, connectivity and resource limits.</li><li>Applied infrastructure changes using Terraform, Ansible, Helm and ArgoCD.</li></ul><h3>Engineering focus</h3><p>Trace symptoms across the workload, node and storage layers. Confirm health after recovery instead of treating a restarted pod as the end of the investigation.</p>'},delivery:{client:'FLEXILANT WORKS · CLIENT: SIX SWISS EXCHANGE',title:'A clearer path from code to deployment.',body:'<h3>Context</h3><p>Worked on CI/CD for a frontend application and a Python/FastAPI backend within company deployment standards.</p><h3>My contributions</h3><ul><li>Replaced one frontend application’s custom GitLab pipeline with a company golden-path component.</li><li>Adopted standard build, lint, test, audit and SonarQube jobs from that component.</li><li>Designed a GitLab CI deployment pipeline for the Python/FastAPI backend.</li><li>Compared push-based SSH deployment with the company’s Ansible deployment standard.</li></ul><h3>Engineering focus</h3><p>Use established delivery conventions, make validation explicit, and choose a deployment approach that fits the target environment.</p>'}};
-const dialog=document.getElementById('case-dialog');let opener=null;function closeDialog(){dialog.close();}document.querySelectorAll('[data-case]').forEach(button=>button.addEventListener('click',()=>{opener=button;const data=cases[button.dataset.case];document.getElementById('case-client').textContent=data.client;document.getElementById('case-title').textContent=data.title;document.getElementById('case-body').innerHTML=data.body;document.body.classList.add('modal-open');dialog.showModal();dialog.scrollTop=0;}));document.getElementById('close-dialog').addEventListener('click',closeDialog);dialog.addEventListener('click',event=>{if(event.target===dialog){const r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)closeDialog();}});dialog.addEventListener('close',()=>{document.body.classList.remove('modal-open');opener?.focus();});
-document.getElementById('copy-email').addEventListener('click',async()=>{const status=document.getElementById('copy-status');try{await navigator.clipboard.writeText('palthi.sailohith@gmail.com');status.textContent='Email copied';}catch{status.textContent='palthi.sailohith@gmail.com';}});document.getElementById('year').textContent=new Date().getFullYear();const progress=document.querySelector('.progress');function updateProgress(){const max=document.documentElement.scrollHeight-innerHeight;progress.style.width=(max>0?scrollY/max*100:0)+'%';}addEventListener('scroll',updateProgress,{passive:true});addEventListener('resize',updateProgress);updateProgress();
+import { projects } from './projects.js';
+
+const root = document.documentElement;
+const themeButton = document.getElementById('theme-toggle');
+const themeColor = document.querySelector('meta[name="theme-color"]');
+
+function updateThemeButton() {
+  const dark = root.dataset.theme === 'dark';
+  themeButton.setAttribute('aria-label', dark ? 'Switch to light theme' : 'Switch to dark theme');
+  themeButton.setAttribute('aria-pressed', String(dark));
+  themeColor.setAttribute('content', dark ? '#171816' : '#fafaf9');
+}
+
+themeButton.addEventListener('click', () => {
+  const nextTheme = root.dataset.theme === 'dark' ? 'light' : 'dark';
+  root.dataset.theme = nextTheme;
+  try { localStorage.setItem('lohith-theme', nextTheme); } catch {}
+  updateThemeButton();
+});
+updateThemeButton();
+
+document.getElementById('copy-email').addEventListener('click', async () => {
+  const status = document.getElementById('copy-status');
+  try {
+    await navigator.clipboard.writeText('palthi.sailohith@gmail.com');
+    status.textContent = 'Email copied.';
+  } catch {
+    status.textContent = 'palthi.sailohith@gmail.com';
+  }
+});
+
+function updateTime() {
+  const now = new Date();
+  const time = document.getElementById('local-time');
+  time.textContent = new Intl.DateTimeFormat('en-IN', {
+    timeZone: 'Asia/Kolkata', hour: 'numeric', minute: '2-digit', hour12: true,
+  }).format(now) + ' IST';
+  time.dateTime = now.toISOString();
+  document.getElementById('year').textContent = now.getFullYear();
+}
+updateTime();
+setInterval(updateTime, 60000);
+
+function safeProjectUrl(value) {
+  try {
+    const url = new URL(value);
+    return url.protocol === 'https:' ? url.href : null;
+  } catch { return null; }
+}
+
+const list = document.getElementById('project-list');
+const publishedProjects = projects.filter(project => project.title && project.description);
+for (const project of publishedProjects) {
+  const article = document.createElement('article');
+  article.className = 'project-item';
+  const heading = document.createElement('h3');
+  heading.textContent = project.title;
+  const description = document.createElement('p');
+  description.textContent = project.description;
+  article.append(heading, description);
+  const tags = document.createElement('div');
+  tags.className = 'project-tags';
+  for (const technology of project.technologies || []) {
+    const tag = document.createElement('span');
+    tag.textContent = technology;
+    tags.append(tag);
+  }
+  article.append(tags);
+  const links = document.createElement('div');
+  links.className = 'project-links';
+  for (const [label, value] of [['Repository', project.repository], ['Live demo', project.demo]]) {
+    const url = safeProjectUrl(value);
+    if (!url) continue;
+    const link = document.createElement('a');
+    link.href = url;
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    link.textContent = label + ' ↗';
+    links.append(link);
+  }
+  article.append(links);
+  list.append(article);
+}
+if (publishedProjects.length) {
+  document.getElementById('projects-empty').hidden = true;
+  document.getElementById('project-count').textContent = String(publishedProjects.length).padStart(2, '0');
+}
