@@ -33,7 +33,7 @@ The workflow `.github/workflows/pages.yml` builds and checks the site, uploads o
 
 Repository Settings → Pages → Build and deployment → Source must be **GitHub Actions**. A push to `main` or a manual workflow dispatch deploys the site. The deployment job publishes the verified URL in its environment output.
 
-Configured site address: https://palthisailohith-spec.github.io/portfolio/ (deployment verification pending).
+Live website: https://palthisailohith-spec.github.io/portfolio/ — verified publicly accessible after a successful GitHub Pages deployment.
 
 To publish future updates: edit `src/` or public assets, run the build and checks above, commit the intended files and push to `main`. The workflow rebuilds and publishes automatically. For another domain, update `site.json` and the Pages domain settings, then rebuild.
 
