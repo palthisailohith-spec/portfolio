@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#fafaf9">
-  <meta name="description" content="Sai Lohith — Platform and DevOps Engineer with an SRE background. Kubernetes, distributed storage, automation and reliable infrastructure.">
-  <meta property="og:title" content="Sai Lohith — Platform & DevOps Engineer">
-  <meta property="og:description" content="A small corner of the internet for my work in infrastructure, reliability and the things I build.">
-  <title>Sai Lohith — Platform & DevOps Engineer</title>
+  <meta name="description" content="Sai Lohith — DevOps and Platform Engineer. Four years building Kubernetes platforms, CI/CD, GitOps, infrastructure automation and observability.">
+  <meta property="og:title" content="Sai Lohith — DevOps & Platform Engineer">
+  <meta property="og:description" content="Kubernetes platforms, software delivery and infrastructure automation. Engineering experience at Flexilant Works and NPCI.">
+  <title>Sai Lohith — DevOps & Platform Engineer</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='11' fill='%23262626'/%3E%3Ctext x='8' y='27' font-size='21' font-family='Georgia' fill='%23fafaf9'%3Esl%3C/text%3E%3C/svg%3E">
   <script>try { if (localStorage.getItem('lohith-theme') === 'dark') document.documentElement.dataset.theme = 'dark'; } catch {}</script>
   <link rel="stylesheet" href="styles.css">
@@ -34,11 +34,11 @@
         <div class="avatar" aria-hidden="true"><span>sl.</span><div class="avatar-lines"></div></div>
         <div class="identity-copy">
           <h1 id="intro-title">Sai Lohith<span class="name-period">.</span></h1>
-          <p class="role">Platform & DevOps Engineer <span>· SRE</span></p>
-          <p class="intro-text">I build and automate infrastructure — deploying Kubernetes clusters, developing CI/CD pipelines and setting up the monitoring that makes production systems observable.</p>
-          <p class="intro-text">Four years across SRE, DevOps and platform engineering: building Kubernetes and storage infrastructure at NPCI, then helping design and build a data architecture platform for SIX Swiss Exchange through Flexilant Works.</p>
+          <p class="role">DevOps & Platform Engineer <span>· Site Reliability Engineering</span></p>
+          <p class="intro-text">I’m a DevOps and Platform Engineer with four years of experience building Kubernetes platforms, automating software delivery and engineering production infrastructure.</p>
+          <p class="intro-text">At Flexilant Works, I helped architect and build a data architecture platform for SIX Swiss Exchange on OpenShift Kubernetes. Previously at NPCI, I deployed Kubernetes infrastructure, built CI/CD and observability systems, and worked across production RKE environments with 200+ worker nodes.</p>
           <div class="intro-actions">
-            <a class="button" href="#experience">My experience <span aria-hidden="true">↓</span></a>
+            <a class="button" href="#experience">Experience <span aria-hidden="true">↓</span></a>
             <a class="quiet-link" href="#projects">Projects <span aria-hidden="true">↗</span></a>
           </div>
           <div class="find-me">
@@ -51,57 +51,57 @@
           </div>
         </div>
       </div>
-      <p class="hello-note">Interested in infrastructure, reliability or building better platforms?<br class="desktop-break"> I’m always happy to have a conversation.</p>
+      <p class="hello-note">My work spans infrastructure as code, CI/CD, GitOps and observability — connecting how environments are provisioned with how applications are delivered and run.</p>
       <p class="availability"><span aria-hidden="true"></span>Open to SRE, Platform & DevOps opportunities</p>
     </section>
 
     <section id="experience" class="section" aria-labelledby="experience-title">
       <div class="section-heading"><h2 id="experience-title">Experience</h2><span class="section-meta">2022 — present</span></div>
       <article class="experience-item">
-        <div class="experience-top"><div><h3>Flexilant Works</h3><p class="job-title">DevOps / Platform Engineer</p></div><p class="dates">Aug 2025 — Present</p></div>
+        <div class="experience-top"><div><h3>Flexilant Works</h3><p class="job-title">Consultant — DevOps / Platform Engineering</p></div><p class="dates">Aug 2025 — Present</p></div>
         <p class="client">Client: SIX Swiss Exchange · Remote</p>
-        <p>Helped design and build a data architecture platform on OpenShift Kubernetes, contributing to architecture, service deployment, workflow automation and CI/CD.</p>
+        <p>Helped architect and build a data architecture platform on OpenShift Kubernetes, from platform design and service integration to deployment automation and workflow observability.</p>
         <ul class="engineering-highlights">
-          <li><strong>Platform deployment.</strong> Deployed Airflow, Trino, MinIO, Metaflow, Argo Workflows and Argo Events using Helm, with ArgoCD for continuous delivery.</li>
-          <li><strong>Workflow engineering.</strong> Deployed Airflow end to end, developed DAGs for market and index data workflows, and built their monitoring with Prometheus, Grafana, Alertmanager and Elasticsearch.</li>
-          <li><strong>CI/CD development.</strong> Standardised a frontend GitLab pipeline using company golden-path components for build, lint, test, audit and SonarQube. Designed a deployment pipeline for a Python/FastAPI backend.</li>
-          <li><strong>Infrastructure automation.</strong> Used Terraform and Ansible for provisioning and configuration, and Python and Bash for repeatable infrastructure tasks and health checks.</li>
+          <li>Deployed and integrated Airflow, Trino, MinIO, Metaflow and Argo Workflows/Events using Helm and ArgoCD, configuring application dependencies and continuous delivery.</li>
+          <li>Migrated a frontend application’s custom GitLab CI pipeline to the organisation’s golden-path component, adopting standard build, lint, test, audit and SonarQube jobs.</li>
+          <li>Designed a GitLab CI deployment pipeline for a Python/FastAPI backend and evaluated SSH push-based deployment against the organisation’s Ansible deployment standard.</li>
+          <li>Delivered an end-to-end Apache Airflow deployment, authored DAGs, and implemented workflow monitoring with Prometheus, Grafana, Alertmanager and Elasticsearch.</li>
+          <li>Adapted Helm releases to restricted OpenShift namespaces, service-account permissions, approved registries and network controls; diagnosed integration failures across storage, PostgreSQL, secrets, DNS and TLS.</li>
         </ul>
-        <details><summary>Engineering context <span aria-hidden="true">+</span></summary><div class="detail-body"><p>Designed deployments around enterprise RBAC, approved registries, service accounts and centrally managed GitOps. Investigated failures across workload resources, persistent storage, secrets, PostgreSQL connectivity, TLS and service networking.</p><p>Used Cursor, Claude and GitHub Copilot for engineering work, reviewing and testing AI-assisted changes before deployment.</p></div></details>
       </article>
       <article class="experience-item">
-        <div class="experience-top"><div><h3>National Payments Corporation of India</h3><p class="job-title">Site Reliability Engineering · Graduate Engineer Trainee → Senior Associate SRE</p></div><p class="dates">Sep 2022 — Aug 2025</p></div>
-        <p>Built and operated Kubernetes infrastructure, end-to-end monitoring and CI/CD for analytics workloads across production and UAT environments.</p>
+        <div class="experience-top"><div><h3>National Payments Corporation of India</h3><p class="job-title">Site Reliability Engineering</p></div><p class="dates">Sep 2022 — Aug 2025</p></div>
+        <p>Built and operated Kubernetes, delivery and observability infrastructure for analytics workloads across production and UAT environments. Progressed from Graduate Engineer Trainee to Senior Associate SRE.</p>
         <ul class="engineering-highlights">
-          <li><strong>Kubernetes infrastructure.</strong> Deployed Kubernetes clusters with RKE and managed workload delivery with Helm and ArgoCD. Production environments included 200+ and 50+ node RKE clusters across two sites.</li>
-          <li><strong>End-to-end observability.</strong> Set up monitoring and alerting for an analytics platform with Prometheus, Grafana, ELK and Alertmanager — from metrics collection and dashboards to log visibility and alerts.</li>
-          <li><strong>CI/CD engineering.</strong> Developed and maintained Jenkins and GitLab CI pipelines for automated testing, application deployment and rollback.</li>
-          <li><strong>Infrastructure as code.</strong> Provisioned infrastructure with Terraform, automated Linux host configuration with Ansible, and developed Python and Bash automation for health checks and recurring infrastructure tasks.</li>
-          <li><strong>Distributed storage.</strong> Worked across 10PB+ of Rook-Ceph block, file and object storage, alongside MinIO; investigated failures, recovered components and verified storage and workload health.</li>
+          <li>Deployed Kubernetes clusters with RKE and operated production infrastructure with 200+ worker nodes, including workload deployments, service routing, networking and persistent storage.</li>
+          <li>Built end-to-end monitoring and alerting for an analytics platform using Prometheus, Grafana, ELK and Alertmanager, integrating metrics collection, dashboards, logs and alert configuration.</li>
+          <li>Developed Jenkins and GitLab CI pipelines for automated testing, deployment and rollback; delivered application releases through Helm and ArgoCD.</li>
+          <li>Provisioned infrastructure with Terraform, automated Linux host configuration with Ansible, and developed Python and Bash automation for infrastructure checks and recurring workflows.</li>
+          <li>Operated 10PB+ of Rook-Ceph block, file and object storage alongside MinIO. Diagnosed Ceph/OSD failures, recovered affected components and verified dependent Kubernetes workloads.</li>
         </ul>
-        <details><summary>Career progression & reliability work <span aria-hidden="true">+</span></summary><div class="detail-body"><p>Worked across Kubernetes scheduling, networking and persistent volumes, Linux CPU, memory and disk issues, and Ceph/OSD health. Earlier work included pre-production Kubernetes, Docker workloads, MinIO setup and an initial Rook-Ceph deployment.</p><div class="role-history"><span>2024 — 2025</span><span>Senior Associate SRE</span><span>2023 — 2024</span><span>Associate SRE</span><span>2022 — 2023</span><span>Graduate Engineer Trainee</span></div></div></details>
+        <details><summary>Role progression <span aria-hidden="true">+</span></summary><div class="detail-body"><div class="role-history"><span>2024 — 2025</span><span>Senior Associate SRE</span><span>2023 — 2024</span><span>Associate SRE</span><span>2022 — 2023</span><span>Graduate Engineer Trainee</span></div><p>Earlier work included pre-production Kubernetes and Docker deployments, MinIO configuration and initial Rook-Ceph setup. Worked with AWS EC2, S3, IAM, VPC and CloudWatch alongside on-premises infrastructure.</p></div></details>
       </article>
     </section>
 
     <section id="projects" class="section" aria-labelledby="projects-title">
       <div class="section-heading"><h2 id="projects-title">Projects</h2><span class="section-meta" id="project-count">In the works</span></div>
       <div id="project-list"></div>
-      <div id="projects-empty" class="projects-empty"><span class="project-mark" aria-hidden="true">⌘</span><div><p>A few things are taking shape.</p><p>I’ll share projects here as I ship them.</p></div></div>
+      <div id="projects-empty" class="projects-empty"><span class="project-mark" aria-hidden="true">⌘</span><div><p>Projects will be published here.</p><p>Implementation details, source code and demos — as they ship.</p></div></div>
     </section>
 
     <section class="section toolkit" aria-labelledby="toolkit-title">
-      <div class="section-heading"><h2 id="toolkit-title">Things I work with</h2></div>
-      <dl><div><dt>Infrastructure</dt><dd>Kubernetes, OpenShift, Linux, Docker, AWS</dd></div><div><dt>Delivery</dt><dd>GitLab CI, Jenkins, ArgoCD, Helm, Terraform, Ansible</dd></div><div><dt>Storage & visibility</dt><dd>Rook-Ceph, MinIO, Prometheus, Grafana, Elasticsearch</dd></div><div><dt>Languages</dt><dd>Python, Bash</dd></div></dl>
+      <div class="section-heading"><h2 id="toolkit-title">Engineering stack</h2></div>
+      <dl><div><dt>Platforms & systems</dt><dd>OpenShift Kubernetes, RKE, Docker, Linux, AWS</dd></div><div><dt>Delivery & automation</dt><dd>GitLab CI, Jenkins, ArgoCD, Helm, Terraform, Ansible</dd></div><div><dt>Observability</dt><dd>Prometheus, Grafana, Alertmanager, Elasticsearch</dd></div><div><dt>Data & storage</dt><dd>Airflow, Trino, Metaflow, Rook-Ceph, MinIO, PostgreSQL</dd></div><div><dt>Languages</dt><dd>Python, Bash</dd></div><div><dt>Development workflow</dt><dd>Cursor, Claude, GitHub Copilot, coding agents and reusable agent skills. AI-assisted changes are reviewed and tested before use.</dd></div></dl>
     </section>
 
     <section id="contact" class="section contact" aria-labelledby="contact-title">
-      <h2 id="contact-title">Say hello.</h2>
-      <p>For opportunities, interesting problems, or a conversation about infrastructure.</p>
+      <h2 id="contact-title">Get in touch</h2>
+      <p>For DevOps, platform engineering and SRE opportunities, or to discuss my work.</p>
       <div class="email-row"><a href="mailto:palthi.sailohith@gmail.com">palthi.sailohith@gmail.com <span aria-hidden="true">↗</span></a><button type="button" id="copy-email" aria-label="Copy email address"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M15 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h3"/></svg></button></div>
       <p id="copy-status" class="copy-status" role="status"></p>
     </section>
   </main>
-  <footer class="page site-footer"><div><span>© <span id="year">2026</span> Sai Lohith</span><span>India · <time id="local-time">IST</time></span></div><p>A small corner of the internet for the things I build.</p></footer>
+  <footer class="page site-footer"><div><span>© <span id="year">2026</span> Sai Lohith</span><span>India · <time id="local-time">IST</time></span></div><p>Platform engineering, software delivery and reliability.</p></footer>
   <script type="module" src="app.js"></script>
 </body>
 </html>
