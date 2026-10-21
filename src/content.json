@@ -1,0 +1,379 @@
+{
+  "identity": {
+    "name": "Sai Lohith",
+    "role": "DevOps / Platform / Site Reliability Engineering",
+    "email": "palthi.sailohith@gmail.com",
+    "github": "https://github.com/palthisailohith-spec",
+    "linkedin": "https://www.linkedin.com/in/sai-lohith-260214192/"
+  },
+  "cases": [
+    {
+      "id": "platform",
+      "number": "01",
+      "title": "Building a data architecture platform.",
+      "context": "Flexilant Works · Client: SIX Swiss Exchange",
+      "description": "Helped architect and build a platform on OpenShift Kubernetes, integrating orchestration, query, storage and workflow services within enterprise access controls.",
+      "focus": "Service integration / Helm / GitOps",
+      "contributions": [
+        {
+          "title": "Architecture & integration",
+          "description": "Helped architect and build a data architecture platform; deployed and integrated Airflow, Trino, MinIO, Metaflow, Argo Workflows and Argo Events."
+        },
+        {
+          "title": "Deployment within controls",
+          "description": "Used Helm for service configuration and ArgoCD for application delivery. Adapted releases to namespace RBAC, service accounts, approved registries and controlled networking."
+        },
+        {
+          "title": "Airflow end to end",
+          "description": "Deployed Apache Airflow end to end, authored DAGs, and implemented workflow monitoring with Prometheus, Grafana, Alertmanager and Elasticsearch."
+        },
+        {
+          "title": "Application dependencies",
+          "description": "Worked with Kubeseal and Kubernetes Sealed Secrets. Investigated dependencies across secrets, persistent volumes, PostgreSQL connectivity, DNS and TLS."
+        }
+      ],
+      "decision": "A Helm chart is only part of a deployment. Application dependencies, permissions, registry access and network reachability all have to fit the target environment.",
+      "scope": "These notes describe my contributions through Flexilant Works. The diagram is a conceptual grouping of technologies, not SIX Swiss Exchange’s internal topology.",
+      "constraints": "Restricted namespaces, service-account permissions, approved registries, sealed secrets and controlled network paths shaped how services could be deployed and integrated.",
+      "delivered": "Contributed platform architecture and integration, Helm-based deployments and ArgoCD delivery, with Airflow DAGs and workflow monitoring."
+    },
+    {
+      "id": "delivery",
+      "number": "02",
+      "title": "A standard path from code to delivery.",
+      "context": "Flexilant Works · Application delivery",
+      "description": "Migrated a frontend GitLab CI pipeline to an organisational golden path. Designed a separate deployment pipeline for a Python/FastAPI backend.",
+      "focus": "Pipeline standardisation / Deployment design",
+      "contributions": [
+        {
+          "title": "Frontend migration — implemented",
+          "description": "Migrated one frontend application’s custom GitLab CI pipeline to an organisation-standard golden-path component."
+        },
+        {
+          "title": "Standard quality jobs — adopted",
+          "description": "Adopted the component’s build, lint, test, audit and SonarQube jobs rather than maintaining an application-specific pipeline implementation."
+        },
+        {
+          "title": "Backend pipeline — designed",
+          "description": "Designed a GitLab CI deployment pipeline for a Python/FastAPI backend."
+        },
+        {
+          "title": "Deployment approaches — evaluated",
+          "description": "Evaluated SSH push-based deployment against the organisation’s Ansible deployment approach."
+        }
+      ],
+      "decision": "The frontend migration was implemented. The backend work involved pipeline design and comparison of deployment approaches; these are distinct contributions.",
+      "scope": "The comparison shows the verified frontend standardisation concept. It makes no claim about deployment speed, defect reduction or adoption across other teams.",
+      "constraints": "The frontend needed to use the organisation-standard pipeline component. Backend deployment was a separate design problem with an established Ansible approach to consider.",
+      "delivered": "Completed the frontend migration to the golden-path component. Produced a separate Python/FastAPI deployment design and evaluated SSH versus Ansible; no backend implementation or speed improvement is implied."
+    },
+    {
+      "id": "reliability",
+      "number": "03",
+      "title": "Reliability spans more than the workload.",
+      "context": "National Payments Corporation of India",
+      "description": "Worked across production RKE infrastructure with 200+ worker nodes and 10PB+ of Rook-Ceph storage. Investigated failures across compute, networking and storage dependencies.",
+      "focus": "Kubernetes / Distributed storage / Observability",
+      "contributions": [
+        {
+          "title": "Production Kubernetes",
+          "description": "Worked on production RKE Kubernetes infrastructure with 200+ worker nodes, including deployments, service routing, networking and persistent storage."
+        },
+        {
+          "title": "Distributed storage recovery",
+          "description": "Operated 10PB+ of Rook-Ceph block, file and object storage, alongside MinIO. Diagnosed Ceph/OSD failures, recovered affected components and checked dependent workloads."
+        },
+        {
+          "title": "Infrastructure & application changes",
+          "description": "Applied infrastructure changes with Terraform and Ansible, and delivered application changes with Helm and ArgoCD."
+        },
+        {
+          "title": "Visibility & automation",
+          "description": "Worked on Prometheus, Grafana and Alertmanager for Kubernetes/Linux visibility; maintained Jenkins and GitLab CI pipelines and developed Python and Bash automation."
+        }
+      ],
+      "decision": "Investigate the dependency, not just the symptom. A workload issue can involve resource pressure, scheduling, networking, persistent volumes or the underlying storage system.",
+      "scope": "Scale figures belong to NPCI only. They describe environments I worked on, not sole ownership, a payment transaction-processing topology or an availability guarantee.",
+      "constraints": "Workload health depended on compute, scheduling, networking and persistent storage. Investigation had to follow the affected dependencies across those layers.",
+      "delivered": "Delivered infrastructure and application changes, monitoring and automation, and recovery of affected storage components with checks on dependent workloads. The diagram illustrates an investigation approach, not a particular incident record."
+    }
+  ],
+  "modes": {
+    "delivery": {
+      "label": "Delivery",
+      "kicker": "From change to workload",
+      "title": "A commit is the beginning.",
+      "description": "Follow the responsibilities between source, validation, configuration and deployment.",
+      "nodes": [
+        {
+          "id": "source",
+          "title": "Source",
+          "subtitle": "Git repository",
+          "icon": "branch",
+          "role": "A reviewable starting point",
+          "detail": "Application code and deployment configuration begin as versioned changes. Source control records what is proposed and what can be reviewed.",
+          "tools": "Git · GitLab",
+          "connection": "The CI pipeline runs against a particular source revision.",
+          "case": "delivery"
+        },
+        {
+          "id": "ci",
+          "title": "Validate",
+          "subtitle": "GitLab CI",
+          "icon": "check",
+          "role": "One delivery convention",
+          "detail": "The frontend golden path supplies build, lint, test, audit and SonarQube jobs through a shared component.",
+          "tools": "Build · Lint · Test · Audit · SonarQube",
+          "connection": "Validation and build outputs prepare a change for delivery. Exact jobs depend on the application.",
+          "case": "delivery"
+        },
+        {
+          "id": "artifacts",
+          "title": "Package",
+          "subtitle": "Build output",
+          "icon": "box",
+          "role": "A defined deployment input",
+          "detail": "In this educational flow, a build produces a deployable artifact or image. This step explains the pattern; it does not assert a specific employer registry layout.",
+          "tools": "Container images · Build artifacts",
+          "connection": "Approved build inputs and configuration are needed by the deployment process.",
+          "case": "delivery"
+        },
+        {
+          "id": "gitops",
+          "title": "Configure",
+          "subtitle": "Helm + ArgoCD",
+          "icon": "layers",
+          "role": "Configuration meets delivery",
+          "detail": "Helm expresses application configuration. ArgoCD delivers application changes through the established GitOps platform, subject to its repository and access controls.",
+          "tools": "Helm · ArgoCD",
+          "connection": "Rendered resources must fit namespace permissions and platform prerequisites.",
+          "case": "platform"
+        },
+        {
+          "id": "workload",
+          "title": "Deploy",
+          "subtitle": "Kubernetes",
+          "icon": "cluster",
+          "role": "Verify the running result",
+          "detail": "Inspect readiness, resources, secrets, storage and service connectivity. A successful pipeline job alone does not establish that an application is working.",
+          "tools": "OpenShift Kubernetes · Workload health",
+          "connection": "Workload behaviour is then inspected through metrics, logs and application checks.",
+          "case": "platform"
+        }
+      ]
+    },
+    "platform": {
+      "label": "Platform",
+      "kicker": "Integration under constraints",
+      "title": "Services become a platform together.",
+      "description": "Inspect the boundaries between orchestration, applications and the dependencies they need.",
+      "nodes": [
+        {
+          "id": "access",
+          "title": "Access",
+          "subtitle": "RBAC + registries",
+          "icon": "lock",
+          "role": "Start with the boundaries",
+          "detail": "Restricted enterprise namespaces shape deployment choices: service accounts, namespace RBAC, approved images and controlled network access have to be accounted for.",
+          "tools": "RBAC · Service accounts · Private registries",
+          "connection": "A chart must use resources and privileges available in the target namespace.",
+          "case": "platform"
+        },
+        {
+          "id": "release",
+          "title": "Release",
+          "subtitle": "Helm + GitOps",
+          "icon": "layers",
+          "role": "Describe the deployment",
+          "detail": "Configure Helm releases for the platform and deliver application changes through ArgoCD. Centrally managed services remain subject to their existing governance.",
+          "tools": "Helm · ArgoCD",
+          "connection": "Configuration determines how services reach their dependencies.",
+          "case": "platform"
+        },
+        {
+          "id": "services",
+          "title": "Services",
+          "subtitle": "Workflows + query",
+          "icon": "cluster",
+          "role": "Integrate distinct workloads",
+          "detail": "My platform work includes Airflow, Trino, Metaflow, Argo Workflows and Argo Events. This grouping shows areas of work, not a claim that every service directly calls every other service.",
+          "tools": "Airflow · Trino · Metaflow · Argo",
+          "connection": "Workloads need appropriate connectivity, storage and credentials.",
+          "case": "platform"
+        },
+        {
+          "id": "dependencies",
+          "title": "Dependencies",
+          "subtitle": "Data + connectivity",
+          "icon": "box",
+          "role": "Look beyond the pod",
+          "detail": "Persistent volumes, MinIO object storage, PostgreSQL connectivity, DNS and TLS are part of the deployment and troubleshooting context.",
+          "tools": "MinIO · PostgreSQL · PVs · DNS · TLS",
+          "connection": "Check the specific failing dependency rather than assuming application code is at fault.",
+          "case": "platform"
+        },
+        {
+          "id": "secrets",
+          "title": "Secrets",
+          "subtitle": "Controlled configuration",
+          "icon": "lock",
+          "role": "Make configuration deployable",
+          "detail": "Work with service accounts, secrets, Kubeseal and Kubernetes Sealed Secrets without exposing sensitive configuration.",
+          "tools": "Kubeseal · Sealed Secrets",
+          "connection": "Secret references, access and application configuration must agree.",
+          "case": "platform"
+        }
+      ]
+    },
+    "reliability": {
+      "label": "Reliability",
+      "kicker": "Follow the evidence",
+      "title": "Symptoms travel across layers.",
+      "description": "Explore illustrative investigation signals. There is no live cluster or production telemetry connected.",
+      "nodes": [
+        {
+          "id": "application",
+          "title": "Workload",
+          "subtitle": "Readiness + failures",
+          "icon": "cluster",
+          "role": "Locate the symptom",
+          "detail": "Illustrative checks: pod status, restart history, readiness and recent changes. Establish which workloads and dependencies are affected.",
+          "tools": "Kubernetes workload inspection",
+          "connection": "Workload symptoms guide the next set of infrastructure checks.",
+          "case": "reliability"
+        },
+        {
+          "id": "metrics",
+          "title": "Metrics",
+          "subtitle": "Prometheus + Grafana",
+          "icon": "chart",
+          "role": "Check resource behaviour",
+          "detail": "Illustrative signals include CPU and memory pressure, node conditions, persistent-volume status and storage health. No numerical values here represent a real environment.",
+          "tools": "Prometheus · Grafana",
+          "connection": "Correlate resource behaviour with events and logs.",
+          "case": "reliability"
+        },
+        {
+          "id": "logs",
+          "title": "Logs",
+          "subtitle": "Elasticsearch",
+          "icon": "lines",
+          "role": "Add failure context",
+          "detail": "Logs and events can reveal connectivity errors, TLS problems, missing configuration or a failing application dependency.",
+          "tools": "Elasticsearch · Events · Application logs",
+          "connection": "Compare logs with the affected workload’s dependencies.",
+          "case": "platform"
+        },
+        {
+          "id": "investigate",
+          "title": "Investigate",
+          "subtitle": "Compute / network / storage",
+          "icon": "search",
+          "role": "Trace the dependency",
+          "detail": "For storage incidents, inspect Ceph/OSD health, identify affected volumes and workloads, and recover failed components. Other investigations may involve DNS, TLS or scheduling.",
+          "tools": "Linux · Kubernetes · Rook-Ceph",
+          "connection": "The recovery action should address the identified failure.",
+          "case": "reliability"
+        },
+        {
+          "id": "verify",
+          "title": "Verify",
+          "subtitle": "Recovery + alerts",
+          "icon": "check",
+          "role": "Confirm the result",
+          "detail": "Recheck storage health, affected pods and application dependencies after recovery. Monitoring and Alertmanager provide continuing operational visibility.",
+          "tools": "Health checks · Alertmanager",
+          "connection": "Recovery is checked at the dependent workload as well as the recovered component.",
+          "case": "reliability"
+        }
+      ]
+    }
+  },
+  "capabilities": [
+    {
+      "id": "platform",
+      "name": "Platform integration",
+      "line": "Make services work within the platform’s boundaries.",
+      "tools": "Deployment: OpenShift Kubernetes, Helm, ArgoCD. Integration: Airflow, Trino, MinIO, Metaflow and Argo Workflows/Events.",
+      "example": "Deployed and integrated data-platform services under restricted namespace, registry and network access.",
+      "mode": "platform",
+      "case": "platform"
+    },
+    {
+      "id": "delivery",
+      "name": "Delivery & automation",
+      "line": "Turn application changes into reviewable delivery workflows.",
+      "tools": "Pipeline components: GitLab CI, Jenkins. Provisioning and configuration: Terraform, Ansible. Automation: Python, Bash.",
+      "example": "Migrated a frontend pipeline to standard components and designed deployment for a Python/FastAPI backend.",
+      "mode": "delivery",
+      "case": "delivery"
+    },
+    {
+      "id": "reliability",
+      "name": "Observability & reliability",
+      "line": "Connect workload symptoms to infrastructure evidence.",
+      "tools": "Signals: Prometheus, Grafana, Alertmanager, Elasticsearch. Infrastructure investigation: Linux, Rook-Ceph.",
+      "example": "Worked across Kubernetes/Linux monitoring and Ceph/OSD failure investigation at NPCI.",
+      "mode": "reliability",
+      "case": "reliability"
+    },
+    {
+      "id": "security",
+      "name": "Security & governance",
+      "line": "Design deployments around real access controls.",
+      "tools": "RBAC, service accounts, private registries, Kubeseal, Sealed Secrets, DNS, TLS",
+      "example": "Adapted Helm releases to controlled enterprise namespaces without assuming cluster-administrator access.",
+      "mode": "platform",
+      "case": "platform"
+    },
+    {
+      "id": "cloud",
+      "name": "Cloud & systems",
+      "line": "Work across hosts, cloud services and application dependencies.",
+      "tools": "AWS EC2, S3, IAM, VPC, CloudWatch; Linux; Python; Bash; Terraform; Ansible",
+      "example": "Used AWS alongside on-premises infrastructure, with infrastructure provisioning and host configuration automation.",
+      "mode": "reliability",
+      "case": "reliability"
+    },
+    {
+      "id": "ai",
+      "name": "AI-assisted engineering",
+      "line": "Use coding agents as part of an accountable development workflow.",
+      "tools": "Cursor, Claude, GitHub Copilot, coding agents, reusable agent skills",
+      "example": "Extensive hands-on use for engineering changes, including deployment configuration, CI/CD and automation. Changes are reviewed and tested before use.",
+      "mode": "delivery",
+      "case": null
+    }
+  ],
+  "journey": [
+    {
+      "period": "Aug 2025 — Present",
+      "company": "Flexilant Works",
+      "role": "Consultant",
+      "summary": "SIX Swiss Exchange engagement. Platform architecture, integration, deployment and delivery automation with an international engineering team.",
+      "case": "platform"
+    },
+    {
+      "period": "Sep 2024 — Aug 2025",
+      "company": "NPCI",
+      "role": "Senior Associate SRE",
+      "summary": "Production RKE Kubernetes, distributed storage, infrastructure changes and failure investigation.",
+      "case": "reliability"
+    },
+    {
+      "period": "Sep 2023 — Aug 2024",
+      "company": "NPCI",
+      "role": "Associate SRE",
+      "summary": "Kubernetes/Linux observability, Jenkins and GitLab CI pipelines, Helm, AWS, Python and Bash.",
+      "case": null
+    },
+    {
+      "period": "Sep 2022 — Aug 2023",
+      "company": "NPCI",
+      "role": "Graduate Engineer Trainee",
+      "summary": "Pre-production Kubernetes, Docker builds and deployments, MinIO and initial Rook-Ceph setup.",
+      "case": "reliability"
+    }
+  ],
+  "projects": []
+}

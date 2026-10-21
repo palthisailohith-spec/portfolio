@@ -1,42 +1,44 @@
-# Sai Lohith — Portfolio
+# Sai Lohith — Engineering Portfolio
 
-A minimal personal site for Sai Lohith, a Platform & DevOps Engineer with an SRE background. A narrow reading layout, quiet typography, light and dark themes, compact experience, and a space for future projects.
+A responsive portfolio for DevOps, Platform Engineering and SRE work. Includes a conceptual infrastructure explorer, three professional case studies, an interactive CI/CD comparison, capability selector, career timeline and downloadable resume.
 
-## Local preview
+Built with semantic HTML, CSS and native JavaScript modules. Python's standard library builds the static output; no npm installation, application framework or API keys are required. Google Fonts has system-font fallbacks.
+
+## Local development and production build
+
+Requires Python 3.10+; Node.js is used only for optional syntax checks.
 
 ```sh
-python -m http.server 8000 --directory dist
+python3 scripts/build.py
+python3 scripts/check.py
+python3 scripts/check-public.py
+python3 -m http.server 8000 --directory dist
 ```
 
-Visit http://localhost:8000. No installation or build is required. Serve the files over HTTP so JavaScript modules can load. The page remains readable without JavaScript; theme switching, email copy and project rendering use JavaScript. DM Sans loads from Google Fonts, with system font fallbacks.
+Open http://localhost:8000. Serve over HTTP because the content uses fetch and ES modules.
 
-## Editing
+- `src/template.html`: page structure and editorial copy.
+- `src/content.json`: case studies, explorer, capabilities, career and future projects.
+- `src/app.js`: explorer, dialogs, theme and email actions.
+- `src/pipeline.js`: pipeline comparison and accessible job selection.
+- `src/styles.css`: approved visual identity and responsive styles.
+- `dist/assets/`: public resume, favicon and social image.
+- `site.json`: canonical production URL.
 
-- `dist/index.html`: introduction, social links, professional experience, toolkit and contact.
-- `dist/styles.css`: responsive layout and both colour themes.
-- `dist/app.js`: theme preference, email copy, IST clock and project rendering.
-- `dist/projects.js`: shipped projects. Currently empty, as projects will be added later.
-
-To publish a project, add an object to the exported `projects` array:
-
-```js
-export const projects = [{
-  title: 'Your project',
-  description: 'The problem, your implementation, and what works today.',
-  technologies: ['Python', 'Kubernetes'],
-  repository: 'https://github.com/your-account/your-project',
-  demo: 'https://your-project.example' // optional
-}];
-```
-
-Only add actual projects and verified claims. The empty-state message disappears automatically when a project is added. Project text is rendered with DOM text APIs and outbound project links accept HTTPS URLs only.
+The production build generates `dist/`, including portable relative application assets, absolute social metadata, robots.txt and sitemap.xml. Rebuild after editing source. The public assets and generated output are checked in for convenient inspection; CI rebuilds them before deployment.
 
 ## GitHub Pages
 
-The included workflow deploys `dist/` on a push to `main`. In repository Settings → Pages, select GitHub Actions as the source. The separate private preview is published through Sites.
+The workflow `.github/workflows/pages.yml` builds and checks the site, uploads only `dist/`, and deploys it to the `github-pages` environment. Official actions are pinned to commit SHAs. No deployment secret is needed: Pages uses the workflow's scoped GitHub token and OIDC.
 
-## Content and visual direction
+Repository Settings → Pages → Build and deployment → Source must be **GitHub Actions**. A push to `main` or a manual workflow dispatch deploys the site. The deployment job publishes the verified URL in its environment output.
 
-The career content reflects supplied professional experience. Client work is described as employment experience, not as personal projects or open-source contributions. No private source or internal architecture is included. The monogram is intentional and can be replaced with a supplied personal photo later.
+Configured site address: https://palthisailohith-spec.github.io/portfolio/ (deployment verification pending).
 
-Visual reference: https://kaizakin.site/ — minimal navigation, readable content width and restrained section styling. The copy and implementation are original to this portfolio.
+To publish future updates: edit `src/` or public assets, run the build and checks above, commit the intended files and push to `main`. The workflow rebuilds and publishes automatically. For another domain, update `site.json` and the Pages domain settings, then rebuild.
+
+## Public content and verification
+
+Diagrams are conceptual, not employer topology or live telemetry. The frontend golden-path migration is distinct from the separately designed Python/FastAPI backend pipeline. NPCI scale is attributed only to NPCI. Future projects remain empty until real repositories ship.
+
+The site has been tested locally in Chromium at 360, 390, 768, 1024, 1440 and 1920px, including explorer modes, pipeline views and jobs, dialogs, keyboard selection, theme, email copy and the PDF. Physical touch devices, Safari/Firefox and a formal screen-reader audit remain separate checks.
